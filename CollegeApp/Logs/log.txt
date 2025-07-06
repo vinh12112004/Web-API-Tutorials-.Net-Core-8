@@ -1,0 +1,6 @@
+2025-07-06 07:58:00,858  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-07-06 07:58:00,903  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-07-06 07:58:01,115  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-07-06 07:58:01,117  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-07-06 07:58:01,118  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 

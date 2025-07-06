@@ -1,0 +1,56 @@
+2025-06-29 13:18:54,096  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-06-29 13:18:54,161  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-06-29 13:18:54,245  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-06-29 13:18:54,250  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-06-29 13:18:54,250  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-06-29 13:19:01,466  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:19:01,478  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:19:01,479 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:19:01,479 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:19:02,458  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:19:02,459  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:19:02,460 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:19:02,460 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:22:25,542  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 2025-06-29 13:22:29,371  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-06-29 13:22:29,392  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-06-29 13:22:29,480  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-06-29 13:22:29,482  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-06-29 13:22:29,482  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-06-29 13:22:49,514  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:22:49,518  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:22:49,519 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:22:49,520 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:22:51,265  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:22:51,266  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:22:51,266 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:22:51,267 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:23:02,805  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:23:02,806  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:23:02,807 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:23:02,807 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:24:17,995  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-06-29 13:24:18,012  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-06-29 13:24:18,091  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-06-29 13:24:18,094  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-06-29 13:24:18,095  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-06-29 13:24:24,990  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:24:24,994  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:24:24,995 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:24:24,996 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:24:30,431  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 2025-06-29 13:24:33,355  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-06-29 13:24:33,374  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-06-29 13:24:33,452  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-06-29 13:24:33,455  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-06-29 13:24:33,455  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-06-29 13:24:37,029  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:24:37,033  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:24:37,034 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:24:37,035 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:24:45,538  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:24:45,538  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:24:45,539 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:24:45,539 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:26:39,728  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 

@@ -1,0 +1,59 @@
+2025-06-29 13:28:51,702  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-06-29 13:28:51,724  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-06-29 13:28:51,830  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-06-29 13:28:51,832  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-06-29 13:28:51,832  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-06-29 13:28:58,509  INFO CollegeApp.Controllers.StudentController.Index [166] - MESSAGE: Index action information log
+ 2025-06-29 13:28:58,515  WARN CollegeApp.Controllers.StudentController.Index [167] - MESSAGE: Index action warning log
+ 2025-06-29 13:28:58,516 ERROR CollegeApp.Controllers.StudentController.Index [168] - MESSAGE: Index action error log
+ 2025-06-29 13:28:58,516 FATAL CollegeApp.Controllers.StudentController.Index [169] - MESSAGE: Index action critical log
+ 2025-06-29 13:29:08,006  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 2025-06-29 23:15:29,614  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (190ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [CollegeAppDB];
+ 2025-06-29 23:15:29,729  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (79ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [CollegeAppDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+ 2025-06-29 23:15:29,745  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+ 2025-06-29 23:15:29,748  INFO Microsoft.EntityFrameworkCore.Migrations.? [?] - MESSAGE: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ 2025-06-29 23:15:29,771  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+ 2025-06-29 23:15:29,832  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+ 2025-06-29 23:15:29,839  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+ 2025-06-29 23:15:29,840  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+ 2025-06-29 23:15:29,849  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+ 2025-06-29 23:15:29,857  INFO Microsoft.EntityFrameworkCore.Migrations.? [?] - MESSAGE: Applying migration '20250629160313_InitialDBSetup'.
+ 2025-06-29 23:15:30,014  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Students] (
+    [Id] int NOT NULL IDENTITY,
+    [StudentName] nvarchar(max) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Address] nvarchar(max) NOT NULL,
+    [DOB] datetime2 NOT NULL,
+    CONSTRAINT [PK_Students] PRIMARY KEY ([Id])
+);
+ 2025-06-29 23:15:30,018  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250629160313_InitialDBSetup', N'9.0.6');
+ 2025-06-29 23:15:30,023  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+ 

@@ -1,0 +1,147 @@
+2025-07-02 09:20:43,320  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-07-02 09:20:43,383  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-07-02 09:20:43,568  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-07-02 09:20:43,572  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-07-02 09:20:43,573  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-07-02 09:20:47,639  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:20:48,111  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-02 09:20:50,824  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:20:50,837  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-02 09:22:47,678  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-07-02 09:22:47,709  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-07-02 09:22:47,928  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-07-02 09:22:47,931  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-07-02 09:22:47,931  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-07-02 09:23:04,052  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:23:04,371  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-02 09:23:20,807  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 2025-07-02 09:24:43,253  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+ 2025-07-02 09:24:43,288  INFO Microsoft.EntityFrameworkCore.Migrations.? [?] - MESSAGE: Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ 2025-07-02 09:24:43,322  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+ 2025-07-02 09:24:43,394  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+ 2025-07-02 09:24:43,401  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+ 2025-07-02 09:24:43,402  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+ 2025-07-02 09:24:43,413  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+ 2025-07-02 09:24:43,422  INFO Microsoft.EntityFrameworkCore.Migrations.? [?] - MESSAGE: Applying migration '20250702022432_addData'.
+ 2025-07-02 09:24:43,579  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (130ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var sysname;
+SELECT @var = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Students]') AND [c].[name] = N'StudentName');
+IF @var IS NOT NULL EXEC(N'ALTER TABLE [Students] DROP CONSTRAINT [' + @var + '];');
+ALTER TABLE [Students] ALTER COLUMN [StudentName] nvarchar(250) NOT NULL;
+ 2025-07-02 09:24:43,599  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Students]') AND [c].[name] = N'Email');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Students] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Students] ALTER COLUMN [Email] nvarchar(250) NOT NULL;
+ 2025-07-02 09:24:43,615  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Students]') AND [c].[name] = N'Address');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Students] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Students] ALTER COLUMN [Address] nvarchar(500) NULL;
+ 2025-07-02 09:24:43,644  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Address', N'DOB', N'Email', N'StudentName') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] ON;
+INSERT INTO [Students] ([Id], [Address], [DOB], [Email], [StudentName])
+VALUES (1, N'123 Main St, Springfield', '2000-01-01T00:00:00.0000000', N'JD@gmail.com', N'John Doe'),
+(2, N'456 Elm St, Springfield', '2001-02-02T00:00:00.0000000', N'JS@gmail.com', N'Jane Smith');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Address', N'DOB', N'Email', N'StudentName') AND [object_id] = OBJECT_ID(N'[Students]'))
+    SET IDENTITY_INSERT [Students] OFF;
+ 2025-07-02 09:24:44,270  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250702022432_addData', N'9.0.6');
+ 2025-07-02 09:24:44,277  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+ 2025-07-02 09:24:50,038  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-07-02 09:24:50,070  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-07-02 09:24:50,178  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-07-02 09:24:50,181  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-07-02 09:24:50,181  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-07-02 09:24:55,983  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:24:56,281  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-02 09:25:12,245  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:25:12,649  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[StudentName], [s].[Email], [s].[Address], [s].[DOB]
+FROM [Students] AS [s]
+ 2025-07-02 09:25:20,944  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (68ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[DOB], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+WHERE [s].[Id] = @__id_0
+ 2025-07-02 09:25:54,692  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 500), @p1='?' (DbType = DateTime2), @p2='?' (Size = 250), @p3='?' (Size = 250)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Address], [DOB], [Email], [StudentName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+ 2025-07-02 09:26:00,221  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:26:00,229  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[StudentName], [s].[Email], [s].[Address], [s].[DOB]
+FROM [Students] AS [s]
+ 2025-07-02 09:26:45,534  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 500), @p1='?' (DbType = DateTime2), @p2='?' (Size = 250), @p3='?' (Size = 250)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Address], [DOB], [Email], [StudentName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+ 2025-07-02 09:27:03,824  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (9ms) [Parameters=[@__model_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[DOB], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+WHERE [s].[Id] = @__model_Id_0
+ 2025-07-02 09:27:03,833  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 250)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Students] SET [Email] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+ 2025-07-02 09:27:18,883  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:27:18,887  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[StudentName], [s].[Email], [s].[Address], [s].[DOB]
+FROM [Students] AS [s]
+ 2025-07-02 09:27:29,679  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[DOB], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+WHERE [s].[Id] = @__id_0
+ 2025-07-02 09:27:29,686  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Students]
+OUTPUT 1
+WHERE [Id] = @p0;
+ 2025-07-02 09:27:29,690  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-02 09:27:33,512  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Address], [s].[DOB], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+WHERE [s].[Id] = @__id_0
+ 2025-07-02 09:27:38,710  INFO CollegeApp.Controllers.StudentController.GetStudent [27] - MESSAGE: GetStudent called
+ 2025-07-02 09:27:38,712  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[StudentName], [s].[Email], [s].[Address], [s].[DOB]
+FROM [Students] AS [s]
+ 2025-07-02 09:27:42,001  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
+ 
