@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using CollegeApp.Data;
+using CollegeApp.Data.Repository;
 using CollegeApp.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,25 +14,31 @@ namespace CollegeApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(PolicyName = "AllowOnlyLocalhost")]
+    [Authorize(AuthenticationSchemes ="LoginForLocalUsers")]
     public class StudentController : ControllerBase
     {
-        private readonly CollegeDbContext _dbContext;
         private readonly ILogger<StudentController> _logger;
         private readonly IMapper _mapper;
-        public StudentController(ILogger<StudentController> logger, CollegeDbContext dbContext, IMapper mapper)
+        private readonly IStudentRepository _studentRepository;
+        public StudentController(ILogger<StudentController> logger, IMapper mapper, IStudentRepository studentRepository)
         {
             _logger = logger;
-            _dbContext = dbContext;
             _mapper = mapper;
+            _studentRepository = studentRepository;
         }
 
         [HttpGet]
         [Route("All",Name = "GetAllStudent")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<StudentDTO>> GetStudent()
         {
             _logger.LogInformation("GetStudent called");
-            var students = await _dbContext.Students.ToListAsync();
+            var students = await _studentRepository.GetAllAsync();
 
             var studentDTOData = _mapper.Map<List<StudentDTO>>(students);
 
@@ -43,6 +51,8 @@ namespace CollegeApp.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<StudentDTO>> GetStudentById(int id)
         {
             // BadRequest - 400 - client error
@@ -52,7 +62,7 @@ namespace CollegeApp.Controllers
                 return BadRequest();
             }
 
-            var student = await _dbContext.Students.Where(s => s.Id == id).FirstOrDefaultAsync();
+            var student = await _studentRepository.GetAsync(student => student.Id == id);
             // NotFound - 404 - client error
             if (student == null)
             {
@@ -71,17 +81,18 @@ namespace CollegeApp.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<StudentDTO>> CreateStudentAsync([FromBody]StudentDTO dto)
         {
             if (dto == null)
                 return BadRequest();
             Student student = _mapper.Map<Student>(dto);
 
-            await _dbContext.Students.AddAsync(student);
-            await _dbContext.SaveChangesAsync();
+            var newRecord = await _studentRepository.Create(student);
+          
+            dto.Id = newRecord.Id;
 
-            dto.Id = student.Id;
-            
             return CreatedAtRoute("GetStudentById", new { id = dto.Id }, dto);
         }
 
@@ -90,16 +101,17 @@ namespace CollegeApp.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<StudentDTO>> UpdateStudent([FromBody]StudentDTO dto)
         {
             if (dto == null || dto.Id <= 0)
                 return BadRequest();
-            var existingStudent = await _dbContext.Students.AsNoTracking().Where(s => s.Id == dto.Id).FirstOrDefaultAsync();
+            var existingStudent = await _studentRepository.GetAsync(student => student.Id == dto.Id,true);
             if (existingStudent == null)
                 return NotFound($"cant find student have id={dto.Id}");
             var newRecord = _mapper.Map<Student>(dto) ;
-            _dbContext.Students.Update(newRecord);
-            await _dbContext.SaveChangesAsync();
+            var id = await _studentRepository.Update(newRecord);
             return NoContent();
         }
 
@@ -108,12 +120,14 @@ namespace CollegeApp.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<StudentDTO>> UpdateStudentPartial(int id,[FromBody] JsonPatchDocument<StudentDTO> pathDocument)
         {
             if (pathDocument == null || id <= 0)
                 return BadRequest();
 
-            var existingStudent =await _dbContext.Students.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
+            var existingStudent = await _studentRepository.GetAsync(student => student.Id == id, true);
             if (existingStudent == null)
                 return NotFound();
 
@@ -123,9 +137,8 @@ namespace CollegeApp.Controllers
                 return BadRequest(ModelState);
 
             existingStudent = _mapper.Map<Student>(studentDTO);
-            _dbContext.Students.Update(existingStudent);
+            await _studentRepository.Update(existingStudent);
 
-            await _dbContext.SaveChangesAsync();
             return NoContent();
         }
 
@@ -134,6 +147,8 @@ namespace CollegeApp.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<bool>> DeleteStudent(int id)
         {
             if (id <= 0)
@@ -141,13 +156,12 @@ namespace CollegeApp.Controllers
                 return BadRequest();
             }
 
-            var student = await _dbContext.Students.Where(s => s.Id == id).FirstOrDefaultAsync();
-            if (student == null)
+            var existingStudent = await _studentRepository.GetAsync(student => student.Id == id);
+            if (existingStudent == null)
             {
                 return NotFound($"cant find student have id={id}");
             }
-            _dbContext.Students.Remove(student);
-            await _dbContext.SaveChangesAsync();
+            await _studentRepository.DeleteAsync(existingStudent);
             return Ok(true);
         }
         [HttpGet]

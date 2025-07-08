@@ -1,6 +1,16 @@
-2025-07-06 07:58:00,858  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
- 2025-07-06 07:58:00,903  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
- 2025-07-06 07:58:01,115  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
- 2025-07-06 07:58:01,117  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
- 2025-07-06 07:58:01,118  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+2025-07-08 16:13:09,430  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: https://localhost:7222
+ 2025-07-08 16:13:09,462  INFO Microsoft.Hosting.Lifetime.? [?] - MESSAGE: Now listening on: http://localhost:5038
+ 2025-07-08 16:13:09,672  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Application started. Press Ctrl+C to shut down.
+ 2025-07-08 16:13:09,674  INFO Microsoft.Hosting.Lifetime.OnApplicationStarted [0] - MESSAGE: Hosting environment: Development
+ 2025-07-08 16:13:09,675  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Content root path: D:\ASPCORE\CollegeApp\CollegeApp
+ 2025-07-08 16:13:37,937  INFO CollegeApp.Controllers.StudentController.MoveNext [40] - MESSAGE: GetStudent called
+ 2025-07-08 16:13:38,344  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (62ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[DOB], [s].[DepartmentID], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+ 2025-07-08 16:13:38,450  WARN Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.? [?] - MESSAGE: No output formatter was found for content types 'text/plain' to write the response.
+ 2025-07-08 16:13:44,114  INFO CollegeApp.Controllers.StudentController.MoveNext [40] - MESSAGE: GetStudent called
+ 2025-07-08 16:13:44,119  INFO Microsoft.EntityFrameworkCore.Database.Command.? [?] - MESSAGE: Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[Address], [s].[DOB], [s].[DepartmentID], [s].[Email], [s].[StudentName]
+FROM [Students] AS [s]
+ 2025-07-08 16:14:23,423  INFO Microsoft.Hosting.Lifetime.Invoke [0] - MESSAGE: Application is shutting down...
  

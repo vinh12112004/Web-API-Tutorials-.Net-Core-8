@@ -191,3 +191,5 @@ D:\ASPCORE\CollegeApp\CollegeApp\obj\Debug\net8.0\refint\CollegeApp.dll
 D:\ASPCORE\CollegeApp\CollegeApp\obj\Debug\net8.0\CollegeApp.pdb
 D:\ASPCORE\CollegeApp\CollegeApp\obj\Debug\net8.0\CollegeApp.genruntimeconfig.cache
 D:\ASPCORE\CollegeApp\CollegeApp\obj\Debug\net8.0\ref\CollegeApp.dll
+D:\ASPCORE\CollegeApp\CollegeApp\obj\Debug\net8.0\CollegeApp.sourcelink.json
+D:\ASPCORE\CollegeApp\CollegeApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
